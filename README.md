@@ -1,55 +1,69 @@
-# NPTEL-Assignment
+# Music Streaming Website
 
-Flask Music App
+The Flask Music App is a web application built with Flask that allows users to upload, download, play, and delete songs. It provides a user-friendly interface for browsing and managing a collection of music tracks.
 
-This is a web application built with Flask that allows users to o upload/download/play/delete/search song. 
+## Features
 
-Features
+- Browse and play music: Users can browse through their uploaded songs and play them directly on the web application.
+- Search Song: Users can search for a specific song by its name, artist, or album.
+- Upload New Song: Users can upload new songs to add them to their collection.
+- Delete Song: Users can delete unwanted songs from their collection.
+- View All Songs: Users can view all the songs available in their collection.
 
-1. Browse and play music
-2. Search Song By Name/Artist/Album
-3. Upload New Song
-4. Delete Song
-5. View All Songs
-6. MySQL database integration using Flask-MySQLdb
+## Installation
 
-Installation
+1. Install Python and pip:
 
-1. Install python/pip:
+   ```
+   sudo apt-get update
+   sudo apt-get install python3 python3-pip
+   ```
 
-sudo apt-get update
-sudo apt-get install python3 python3-pip
+2. Clone the repository to your local machine:
 
-2. Clone the repository to your local machine
+   ```
+   git clone <repository_url>
+   ```
 
-3. Install the dependencies:
+3. Install the required dependencies:
 
-pip install -r requirements.txt
+   ```
+   pip install -r requirements.txt
+   ```
 
-4. Setup the flask app environment :
+4. Set up the Flask app environment:
 
-export FLASK_APP=app.py
+   ```
+   export FLASK_APP=app.py
+   ```
 
-5. Create a MySQL database :
+5. Create a MySQL database:
 
-music_streaming
+   ```
+   CREATE DATABASE music_streaming;
+   ```
 
-add the tables provided in this:
+   Create the necessary tables by running the SQL scripts provided in the repository (`songs.sql`, `songs_list.sql`).
 
-songs
+6. Run the application:
 
-songs_list
+   ```
+   flask run
+   ```
 
-6. Run the application :
+## Usage
 
-flask run
+1. Open your web browser and navigate to `http://localhost:5000`.
+2. Use the "Play" button to browse and play music tracks.
+3. Utilize the search functionality to find specific songs by name, artist, or album.
+4. Upload new songs using the "Upload Song" button.
+5. Remove unwanted songs from your collection by clicking the "Delete Song" button.
+6. To view all the songs in your collection, click the "View All Songs" button.
 
-Usage
+## Contributing
 
-1. Navigate to http://localhost:5000 in your web browser.
-2. Browse and play music by clicking the "Play" button.
-3. Search Song By Name/Artist/Album by clicking the "Go" button.
-4. Upload New Song by clicking the "Upload Song" button.
-5. Delete Song by clicking the "Delete Song" button.
-6. View All Songs by clicking the "View All Songs" button.
+Contributions to the Flask Music App are always welcome! If you find any bugs, have suggestions for improvements, or want to contribute new features, please feel free to open an issue or submit a pull request.
 
+## License
+
+This project is licensed under the [MIT License](LICENSE). Feel free to use, modify, and distribute the code as per the terms of the license.
