@@ -1,6 +1,6 @@
 # Music Streaming Website
 
-The Flask Music App is a web application built with Flask that allows users to upload, download, play, and delete songs. It provides a user-friendly interface for browsing and managing a collection of music tracks.
+This Music Streaming Website is a web application built with Flask that allows users to upload, download, play, and delete songs. It provides a user-friendly interface for browsing and managing a collection of music tracks.
 
 ## Features
 
