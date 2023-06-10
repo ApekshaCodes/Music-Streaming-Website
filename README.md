@@ -60,6 +60,14 @@ This Music Streaming Website is a web application built with Flask that allows u
 5. Remove unwanted songs from your collection by clicking the "Delete Song" button.
 6. To view all the songs in your collection, click the "View All Songs" button.
 
+# Screenshots
+
+<img width="1675" alt="Screenshot 2023-06-11 at 1 22 57 AM" src="https://github.com/ApekshaCodes/Music-Streaming-Website/assets/134539162/229a1cde-8c11-4e04-b79e-b3665887bdcc">
+
+
+
+
+
 ## Contributing
 
 Contributions to the Flask Music App are always welcome! If you find any bugs, have suggestions for improvements, or want to contribute new features, please feel free to open an issue or submit a pull request.
