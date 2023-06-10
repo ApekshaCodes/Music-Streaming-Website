@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Music Player</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+		}
+		h1 {
+			text-align: center;
+			margin-top: 50px;
+		}
+		
+        header {
+			background-color: #333;
+			color: #fff;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 1rem;
+		}
+		
+		nav ul {
+			list-style: none;
+			display: flex;
+		}
+		
+		nav li {
+			margin-right: 1rem;
+		}
+		
+		nav a {
+			color: #fff;
+			text-decoration: none;
+		}
+		
+		li {
+			border: 1px solid #ccc;
+			padding: 1rem;
+			margin-bottom: 1rem;
+		}
+
+		.controls button {
+			padding: 10px;
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			margin-right: 10px;
+			cursor: pointer;
+		}
+		
+		button {
+			display: block;
+			margin: 10px 0;
+			padding: 10px;
+			background-color: #428bca;
+			color: #fff;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		  }
+		  
+		.controls button:hover {
+			background-color: #3e8e41;
+		}
+		
+	</style>
+
+	<script>
+		
+		
+		function playPause() {
+			var audio = document.getElementById("audio");
+			console.log(audio)
+		  if (audio.paused) {
+			audio.play();
+		  } else {
+			audio.pause();
+		  }
+		}
+	</script>
+</head>
+<header>
+    <h1>Music Streaming Platform</h1>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('search') }}">Search </a> </li>
+            <li <a href="{{ url_for('allsongs') }}"> Upload Songs</a></li>  
+			<li class ="active"><a href="{{ url_for('songs') }}"> Play Songs</a></li>
+        </ul>
+    </nav>
+</header>
+<body>
+	
+	<h1>{{ song_name }}</h1>
+	<audio controls>
+		<source src="{{ src }}" type="audio/mp3">
+		Your browser does not support the audio element.
+	</audio>
+
+	<a href="{{ src }}" download>
+		<button>Download Song</button>
+	</a>
+	<br>
+
+</body>
+</html>

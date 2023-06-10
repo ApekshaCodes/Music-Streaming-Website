@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search - Music Streaming Platform</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        
+        header {
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+        
+        nav li {
+            margin-right: 1rem;
+        }
+        
+        nav a {
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        main {
+            padding: 1rem;
+        }
+        
+        h2 {
+            margin-top: 0;
+        }
+        
+        form {
+            display: flex;
+            margin-bottom: 1rem;
+        }
+        
+        label {
+            margin-right: 0.5rem;
+        }
+        
+        input[type="text"] {
+            flex-grow: 1;
+        }
+        
+        button[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+        
+        #search-results {
+            margin-top: 1rem;
+        }
+        
+        h3 {
+            margin-top: 0;
+        }
+        
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        li {
+            border: 1px solid #ccc;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        h4 {
+            margin-top: 0;
+        }
+        
+        button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+        
+
+        /* Search result item */
+.search-result {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+}
+
+.search-result img {
+  width: 100px;
+  height: 100px;
+  margin-right: 1rem;
+}
+
+.search-result h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.search-result p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.search-result button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  tr:hover {
+    background-color: #ddd;
+  }
+  
+  td img {
+    max-height: 100px;
+    max-width: 100px;
+  }
+  
+
+  button {
+    padding: 16px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    font-size: 24px;
+  
+  }
+  
+  
+  button.index {
+    background-color: #28a745;
+  }
+  
+  button.index:hover {
+    background-color: #218838;
+  }
+  
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Music Streaming Platform</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+				<li class="active"><a href="{{ url_for('search') }}">Search </a> </li>
+				<li><a href="{{ url_for('allsongs') }}"> Upload Songs</a></li>
+        <li><a href="{{ url_for('songs') }}"> Play Songs</a></li>
+			
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Search</h2>
+        <form action="/search" method="GET">
+            <label for="search-term">Search:</label>
+            <input type="text" id="q" name="q" placeholder="Search songs..." required>
+            <button type="submit">Go</button>
+            </form>
+        </form>
+
+        <table>
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Song Name</th>
+                <th>Album</th>
+                <th>Contributing Artist</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for result in results %}
+              <tr>
+                <td><img src="{{ result[1] }}"></td>
+                <td>{{ result[2] }}</td>
+                <td>{{ result[3] }}</td>
+                <td>{{ result[4] }}</td>
+              </tr>
+              {% endfor %}
+          </table>
+          <a href="{{ url_for('index') }}">
+      
+          <button type="Submit" class="index" align="right"> Back </button>
+        </a>
+</main>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Music Streaming Platform - Login</title>
+	<style> 
+
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+		}
+		
+		header {
+			background-color: #333;
+			color: #fff;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 1rem;
+		}
+		
+		nav ul {
+			list-style: none;
+			display: flex;
+		}
+		
+		nav li {
+			margin-right: 1rem;
+		}
+		
+		nav a {
+			color: #fff;
+			text-decoration: none;
+		}
+		
+		li {
+			border: 1px solid #ccc;
+			padding: 1rem;
+			margin-bottom: 1rem;
+		}
+		.container {
+			max-width: 960px;
+			margin: 0 auto;
+			padding: 20px;
+			box-sizing: border-box;
+		}
+
+		h1 {
+			font-size: 48px;
+			color: #333;
+			text-align: center;
+			margin: 0;
+		}
+
+		p {
+			font-size: 24px;
+			color: #666;
+			text-align: center;
+			margin: 20px 0;
+		}
+
+		button {
+			background-color: #333;
+			color: #fff;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 4px;
+			font-size: 20px;
+			cursor: pointer;
+			display: block;
+			margin: 0 auto;
+		}
+
+		button:hover {
+			background-color: #555;
+		}
+	</style>
+</head>
+<body>
+    <header>
+		<h1>Music Streaming Platform</h1>
+		<nav>
+			<ul>
+				<li class="active"><a href="{{ url_for('index') }}">Home</a></li>
+				<li><a href="{{ url_for('search') }}">Search </a> </li>
+				<li><a href="{{ url_for('allsongs') }}"> Upload Songs</a></li>
+				<li><a href="{{ url_for('songs') }}"> Play Songs</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<div class="container">
+		<h1>Welcome to My Website</h1>
+		<p>Explore our music collection and create your own playlists!</p>
+		<a href="{{ url_for('allsongs') }}">
+		<button>Get Started</button></a>
+	</div>
+</body>
+</html>

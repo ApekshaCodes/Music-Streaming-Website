@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Music Streaming Platform - View All Songs</title>
+	<style>
+	
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+		}
+		
+		header {
+			background-color: #333;
+			color: #fff;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 1rem;
+		}
+		
+		nav ul {
+			list-style: none;
+			display: flex;
+		}
+		
+		nav li {
+			margin-right: 1rem;
+		}
+		
+		nav a {
+			color: #fff;
+			text-decoration: none;
+		}
+		
+		li {
+			border: 1px solid #ccc;
+			padding: 1rem;
+			margin-bottom: 1rem;
+		}
+		 
+		nav li.active a {
+			
+			border-radius: 5px;
+		} 
+		
+		button {
+			padding: 16px;
+			border: none;
+			border-radius: 4px;
+			color: #fff;
+			font-weight: bold;
+			cursor: pointer;
+			transition: all 0.2s ease-in-out;
+			font-size: 24px;
+			background-color: #DC143C;
+		  
+		  }
+		
+
+		button.btn btn-danger{
+			background-color: #28a745;
+		} 
+
+		    
+  button.index {
+	position: absolute;
+ 	right:0;
+    background-color: #28a745;
+  }
+  
+  button.index:hover {
+    background-color: #218838;
+  }
+
+  button.btn-play{
+	background-color: #0000FF;
+  }
+  
+	
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Music Streaming Platform</h1>
+		<nav>
+			<ul>
+				<li><a href="{{ url_for('index') }}">Home</a></li>
+				<li><a href="{{ url_for('search') }}">Search </a> </li>
+				<li><a href="{{ url_for('songs') }}"> Play Songs</a></li>
+				<li class ="active"><a href="{{ url_for('allsongs') }}"> Upload Songs</a></li>
+				
+			</ul>
+		</nav>
+	</header>
+<br> <br>
+<table border="2">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Path</th>
+        <th>Album</th>
+        <th>Name</th>
+        <th>Artist</th>
+		<th> </th>
+		<th> </th>
+      </tr>
+    </thead>
+    <tbody>
+		{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			<ul class="flashes">
+			{% for message in messages %}
+				<li>{{ message }}</li>
+			{% endfor %}
+			</ul>
+		{% endif %}
+	{% endwith %}
+	<br> <br>
+	
+        {% for song in songs %}
+            <tr>
+                <td>{{ song[0] }}</td>
+                <td>{{ song[1] }}</td>
+                <td>{{ song[2] }}</td>
+                <td>{{ song[3] }}</td>
+                <td>{{ song[4] }}</td>
+                <td>
+                <form action="{{ url_for('delete_song', song_id=song[0]) }}" method="POST">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+			<td>
+                <form action="{{ url_for('play_song', song_id=song[0]) }}" method="GET">
+                    <input type="hidden" name="_method" value="PLAY">
+                    <button type="submit" class="btn-play">Play</button>
+                </form>
+            </td>
+			
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+<a href="{{ url_for('allsongs') }}">    
+	<button type="Submit" class="index"> Back </button>
+  </a>
+</body>
+</html>

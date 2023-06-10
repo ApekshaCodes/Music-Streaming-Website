@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Music Streaming Platform - View All Songs</title>
+	<style>
+	
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+		}
+		
+		header {
+			background-color: #333;
+			color: #fff;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 1rem;
+		}
+		
+		nav ul {
+			list-style: none;
+			display: flex;
+		}
+		
+		nav li {
+			margin-right: 1rem;
+		}
+		
+		nav a {
+			color: #fff;
+			text-decoration: none;
+		}
+		
+		li {
+			border: 1px solid #ccc;
+			padding: 1rem;
+			margin-bottom: 1rem;
+		}
+		 
+		nav li.active a {
+			
+			border-radius: 5px;
+		} 
+		
+		
+		/* Styles for the all songs section */
+		.all-songs {
+			margin: 50px auto;
+			width: 600px;
+			padding: 30px;
+			background-color: #f0f0f0;
+			border-radius: 5px;
+		}
+		
+		.all-songs h2 {
+			margin-top: 0;
+		}
+		
+		.song-list {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+		
+		.song-list li {
+			display: flex;
+			align-items: center;
+			margin-bottom: 20px;
+		}
+		
+		.song-list li img {
+			width: 80px;
+			height: 80px;
+			margin-right: 20px;
+			border-radius: 5px;
+			object-fit: cover;
+		}
+		
+		.song-list li div {
+			flex: 1;
+		}
+		
+		.song-list li h3 {
+			margin: 0;
+			font-size: 20px;
+		}
+		
+		.song-list li p {
+			margin: 0;
+			font-size: 16px;
+			
+		}
+		
+		.upload-button {
+			display: inline-block;
+			padding: 12px 24px;
+			font-size: 16px;
+			font-weight: bold;
+			text-align: center;
+			text-transform: uppercase;
+			color: #fff;
+			background-color: #4CAF50;
+			border: none;
+			border-radius: 4px;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+			transition: background-color 0.3s ease;
+		  }
+
+		  
+		  .upload-button:hover {
+			background-color: #2E8B57;
+			cursor: pointer;
+		  }
+		  
+		  .upload-button i {
+			margin-right: 8px;
+		  }
+		  
+		  .view-allsongs-button {
+			display: inline-block;
+			padding: 12px 24px;
+			font-size: 16px;
+			font-weight: bold;
+			text-align: center;
+			text-transform: uppercase;
+			color: #fff;
+			background-color: #FFFF00;
+			border: none;
+			border-radius: 4px;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+			transition: background-color 0.3s ease;
+		  }
+
+
+		  .view-allsongs-button :hover{
+			background-color: #FFFF00;
+			cursor: pointer;
+		  }
+
+		  .view-allsongs-button i{
+			margin-right: 8px;
+		  }
+
+		  button.index{
+			position:absolute;
+			right:0;
+			background-color:#87CEEB;
+			font:bold;
+			padding: 16px;
+			border: none;
+			border-radius: 4px;
+			color: #fff;
+			font-weight: bold;
+			cursor: pointer;
+			transition: all 0.2s ease-in-out;
+			font-size: 24px;
+		  }
+	
+	</style>
+
+</head>
+<body>
+	<header>
+		<h1>Music Streaming Platform</h1>
+		<nav>
+			<ul>
+				<li><a href="{{ url_for('index') }}">Home</a></li>
+				<li><a href="{{ url_for('search') }}">Search </a> </li>
+				<li class="active"><a href="{{ url_for('allsongs') }}"> Upload Songs</a></li>
+				<li><a href="{{ url_for('songs') }}"> Play Songs</a></li>
+			
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<br> <br> <br>
+		
+		<h3> Upload New Song </h3> <br> <br> 
+		<form method="POST" enctype="multipart/form-data">
+			<label for="song-file">Select a song file to upload:</label>
+			<input type="file" id="song-file" name="song-file" required><br><br>
+			
+			<label for="song-name">Song name:</label>
+			<input type="text" id="song-name" name="song-name" required><br><br>
+			
+			<label for="song-artist">Song artist:</label>
+			<input type="text" id="song-artist" name="song-artist" required><br><br>
+			
+			<label for="song-album">Song album:</label>
+			<input type="text" id="song-album" name="song-album" required><br><br>
+			
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+	  
+			<br> <br>
+				<button class="upload-button">
+					<i class="fas fa-cloud-upload-alt"></i>
+					Upload Music
+				  </button>
+		  </form>
+
+		  <br> <br>
+		  <div>
+			<form method="GET" action="{{ url_for('button_click') }}">
+			<button type = "submit" class="view-allsongs-button">
+				<i class="fas fa-cloud-view-alt"></i>
+				View All Songs
+			  </button>
+			</a>
+		</form>
+			</div>
+
+
+			<a href="{{ url_for('index') }}">    
+				<button type="Submit" class="index"> Back </button>
+			  </a>
+	</main>
+	<footer>
+		<p>&copy; Music Streaming Platform 2023</p>
+	</footer>
+</body>
+</html>
